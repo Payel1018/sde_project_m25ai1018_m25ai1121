@@ -1,0 +1,12 @@
+# Make sure that all your apps (folders) will have own requirements
+
+# RabbitMQ
+# Async driver https://aio-pika.readthedocs.io/en/latest/
+aio-pika
+# Sync driver https://www.rabbitmq.com/tutorials/tutorial-one-python
+pika
+
+# Packages for api
+fastapi
+pydantic
+pydantic-settings
