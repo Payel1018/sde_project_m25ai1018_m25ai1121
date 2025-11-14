@@ -1,5 +1,18 @@
-FROM python
-WORKDIR /service1/
-ADD . /service1/
-RUN pip install pika
-CMD [ "python3", "-u", "main.py" ]
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy all files
+COPY . /app
+
+# Install dependencies
+RUN pip install --no-cache-dir fastapi uvicorn aio-pika requests PyJWT pika
+
+# Expose port for FastAPI
+EXPOSE 8000
+
+# Run Uvicorn directly (simpler and avoids -m import issues)
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+

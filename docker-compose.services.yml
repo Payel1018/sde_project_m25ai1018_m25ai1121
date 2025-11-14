@@ -14,3 +14,19 @@ services:
     volumes:
       - ./service2:/service2/
     restart: always
+  
+  auth:
+    container_name: authservice
+    build: auth_service
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./auth_service:/auth_service/
+    restart: always
+  
+  notification:
+    container_name: notification_service
+    build: notification_service
+    volumes:
+      - ./notification_service:/notification_service/
+    restart: always

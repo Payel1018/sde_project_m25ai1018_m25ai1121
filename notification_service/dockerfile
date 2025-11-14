@@ -1,0 +1,5 @@
+FROM python
+WORKDIR /service1/
+ADD . /service1/
+RUN pip install pika
+CMD [ "python3", "-u", "main.py" ]

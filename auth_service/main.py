@@ -1,10 +1,9 @@
-import logging
+# main.py
+import service
+  # absolute import
+app = service.app
 
-from broker import start_consuming
-
-logger = logging.getLogger(__name__)
-
+import uvicorn
 
 if __name__ == "__main__":
-    logger.warning('Service 1 starting...')
-    start_consuming()
+    uvicorn.run("auth_service.main:app", host="0.0.0.0", port=8000, reload=True)
