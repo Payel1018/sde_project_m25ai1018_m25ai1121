@@ -56,6 +56,15 @@ async def order_checkout(data: dict, settings: Annotated[Settings, Depends(get_s
     )
     return {"detail": "Order created."}
 
+@app.post("/api/order/checkout")
+async def user_cart(data: dict, settings: Annotated[Settings, Depends(get_settings)]):
+    await a_publish_to_rabbitmq(
+        queue_name=settings.queue_name_to_cart_order,
+        exchanger=settings.exchanger,
+        routing_key=settings.routing_key_to_cart_order,
+        data=data
+    )
+    return {"detail": "Order created."}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000,

@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  service1:
-    container_name: template_service1
-    build: service1
+  recomendationeng:
+    container_name: recomendation_eng
+    build: recomendation_eng
     volumes:
-      - ./service1:/service1/
+      - ./recomendation_eng:/recomendation_eng/
     restart: always
   
   service2:
