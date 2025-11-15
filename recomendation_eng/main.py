@@ -6,5 +6,5 @@ logger = logging.getLogger(__name__)
 
 
 if __name__ == "__main__":
-    logger.warning('Service 1 starting...')
+    logger.warning('Recomendation eng starting...')
     start_consuming()

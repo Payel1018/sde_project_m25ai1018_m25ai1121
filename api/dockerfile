@@ -1,5 +1,5 @@
 FROM python
 WORKDIR /api/
 ADD . /api/
-RUN pip install aio-pika pika fastapi uvicorn pydantic-settings
+RUN pip install aio-pika pika fastapi uvicorn pydantic-settings PyJWT pandas
 CMD [ "python3", "main.py" ]

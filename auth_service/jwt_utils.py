@@ -3,7 +3,7 @@
 import jwt
 from datetime import datetime, timedelta
 
-JWT_SECRET = "MY_SECRET_KEY"
+JWT_SECRET = "S9!dK2#pL8@qR4%vT1*eW6&yZ3$hN7^bF5!sG0@tM4#pC8%rQ2*eH6&uL9$zB1^"
 JWT_ALGORITHM = "HS256"
 
 

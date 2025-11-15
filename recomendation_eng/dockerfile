@@ -1,5 +1,27 @@
-FROM python
-WORKDIR /service1/
-ADD . /service1/
-RUN pip install pika
-CMD [ "python3", "-u", "main.py" ]
+FROM python:3.11-slim
+
+WORKDIR /recomendation_eng/
+
+# Install OS dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy project files
+COPY . /recomendation_eng/
+
+# Upgrade pip and install Python dependencies
+RUN pip install --upgrade pip
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+RUN pip install pika pandas numpy scikit-learn pydantic sentence_transformers onnxruntime
+
+# Pre-download the SentenceTransformer model to avoid runtime delay
+RUN python3 -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
+
+# Run the main program
+CMD ["python3", "-u", "main.py"]
