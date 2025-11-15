@@ -20,6 +20,8 @@ export class AppComponent {
   role: string | null = null;
  books: any[] = []; 
   apiUrl = this.configService.readConfig().API_URL;
+  showCart = false;
+
 
   constructor(private route: ActivatedRoute,private http: HttpClient) {
     console.log(this.configService.readConfig().API_URL);
@@ -58,7 +60,31 @@ export class AppComponent {
     window.location.href = 'http://localhost:8001/auth/login';
   }
 
+  cartCount = 0;
+  addedBooks: any[] = [];
+  allAddedBooks: any[] = [];
+
+  selectedBook: any = null;   // only one object
+
    addToCart(book: any) {
-    alert(`Added "${book.title}" to cart!`);
+      this.allAddedBooks.push(book);
+      this.addedBooks.push(book.book_id);   // store only ID
+      this.selectedBook = book;   // save the current selection
+      this.cartCount++; 
   }
+
+  toggleCart() {
+  this.showCart = !this.showCart;
+}
+
+buyBooks() {
+  alert("Purchase successful!");
+
+  this.allAddedBooks = [];
+  this.addedBooks = [];
+  this.cartCount = 0;
+  this.showCart = false;
+}
+
+
 }
