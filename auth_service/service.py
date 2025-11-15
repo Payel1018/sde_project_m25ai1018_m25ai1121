@@ -30,6 +30,9 @@ async def login():
 
 @app.get("/auth/callback")
 async def auth_callback(request: Request):
+
+    FRONTEND_URL = "http://localhost:8080/"  # Angular route
+
     code = request.query_params.get("code")
     if not code:
         raise HTTPException(status_code=400, detail="Missing code in callback")
@@ -64,11 +67,8 @@ async def auth_callback(request: Request):
         data=event_data
     )
 
-    return JSONResponse({
-        "access_token": token,
-        "token_type": "bearer",
-        "user": {"name": name, "email": email, "role": role,"picture":picture}
-    })
+    redirect_url = f"{FRONTEND_URL}?token={token}&name={name}&role={role}&picture={picture}"
+    return RedirectResponse(url=redirect_url)
 
 
 
