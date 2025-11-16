@@ -1,9 +1,7 @@
 <!-- Improved compatibility of back to top link -->
 <a id="readme-top"></a>
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
+
 
   <img src="images/logo.png" alt="Logo" width="80" height="80">
 
@@ -59,7 +57,7 @@
 This project is a **complete Event-Driven Book Store Application**, designed for the **SDE Major Project** course.  
 The architecture is built using **microservices**, communicating asynchronously using **RabbitMQ**.
 
-### ✨ Key Capabilities
+###  Key Capabilities
 
 - Browse, search, and view books  
 - Add books to cart  
@@ -71,7 +69,7 @@ The architecture is built using **microservices**, communicating asynchronously 
 
 ---
 
-## 📚 Book Store Overview
+##  Book Store Overview
 
 The Book Store contains the following core microservices:
 
@@ -124,5 +122,5 @@ Sends user notification (email / toast message).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## Architecture Diagram
+
 
